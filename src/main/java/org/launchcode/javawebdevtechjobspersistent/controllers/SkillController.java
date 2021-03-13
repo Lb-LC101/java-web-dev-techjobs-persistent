@@ -29,6 +29,12 @@ public class SkillController {
         return "skills";
     }
 
+    @GetMapping("add")
+    public String displayAddSkillsForm(Model model) {
+        model.addAttribute(new Skill());
+        return "skills/add";
+    }
+
     @PostMapping("add")
     public String processAddSkillForm(@ModelAttribute @Valid Skill newSkill,
                                          Errors errors, Model model) {
@@ -37,7 +43,7 @@ public class SkillController {
             return "skills/add";
         }
         skillRepository.save(newSkill);
-        return "redirect:";
+        return "redirect:../";
 
     }
 

@@ -8,9 +8,10 @@ import javax.validation.constraints.Size;
 public class Skill extends AbstractEntity {
 
     // Class variables
-    @NotBlank(message = "Name is required")
+
+    @NotBlank(message = "Description is required")
     @Size(min = 5, max = 255, message = "Skill description must be between 5 and 255 characters")
-    private String skills;
+    private String description;
 
     // Constructors
     public Skill() {}
@@ -19,11 +20,12 @@ public class Skill extends AbstractEntity {
 
     //getters and setters
 
-    public String getSkills() {
-        return skills;
+
+    public String getDescription() {
+        return description;
     }
 
-    public void setSkills(String skills) {
-        this.skills = skills;
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
