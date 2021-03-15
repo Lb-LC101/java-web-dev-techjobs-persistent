@@ -1,6 +1,10 @@
 package org.launchcode.javawebdevtechjobspersistent.controllers;
 
+import org.launchcode.javawebdevtechjobspersistent.models.Employer;
 import org.launchcode.javawebdevtechjobspersistent.models.Job;
+import org.launchcode.javawebdevtechjobspersistent.models.data.EmployerRepository;
+import org.launchcode.javawebdevtechjobspersistent.models.data.SkillRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -15,6 +19,10 @@ import java.util.List;
 @Controller
 public class HomeController {
 
+    @Autowired
+    private EmployerRepository employerRepository;
+    private SkillRepository skillRepository;
+
     @RequestMapping("")
     public String index(Model model) {
 
@@ -27,6 +35,7 @@ public class HomeController {
     public String displayAddJobForm(Model model) {
         model.addAttribute("title", "Add Job");
         model.addAttribute(new Job());
+        model.addAttribute("employers", employerRepository.findAll());
         return "add";
     }
 
@@ -38,7 +47,11 @@ public class HomeController {
             model.addAttribute("title", "Add Job");
             return "add";
         }
+        //add employer selected from drop-down menu to the new job.  If there is no employer in the employer repository, create a new employer.
+        Employer selectedEmployer = employerRepository.findById(employerId).orElse(new Employer());
+        newJob.setEmployer(selectedEmployer);
 
+        //jobRepository.save(new Job);
         return "redirect:";
     }
 
