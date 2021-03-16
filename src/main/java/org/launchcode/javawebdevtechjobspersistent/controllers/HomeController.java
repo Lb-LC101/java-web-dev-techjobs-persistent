@@ -42,6 +42,8 @@ public class HomeController {
         model.addAttribute("title", "Add Job");
         model.addAttribute(new Job());
         model.addAttribute("employers", employerRepository.findAll());
+        //Do I need this line:
+        model.addAttribute("skills", skillRepository.findAll());
         return "add";
     }
 
@@ -56,6 +58,9 @@ public class HomeController {
         //add employer selected from drop-down menu to the new job.  If there is no employer in the employer repository, create a new employer.
         Employer selectedEmployer = employerRepository.findById(employerId).orElse(new Employer());
         newJob.setEmployer(selectedEmployer);
+        //add skills selected from checkbox to the new job.  If there is no skill in the skill repository, create a new skill.
+        List<Skill> selectedSkills = (List<Skill>) skillRepository.findAllById(skills);
+        newJob.setSkills(selectedSkills);
 
         jobRepository.save(newJob);
         return "redirect:";
@@ -73,7 +78,6 @@ public class HomeController {
             return "redirect:../";
         }
 
-        //return "view";
     }
 
 
