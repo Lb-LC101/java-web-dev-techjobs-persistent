@@ -13,6 +13,7 @@ public class Skill extends AbstractEntity {
     @Size(min = 5, max = 255, message = "Skill description must be between 5 and 255 characters")
     private String description;
 
+
     // Constructors
     public Skill() {}
 
