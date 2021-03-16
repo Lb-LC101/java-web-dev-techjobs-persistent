@@ -42,7 +42,6 @@ public class HomeController {
         model.addAttribute("title", "Add Job");
         model.addAttribute(new Job());
         model.addAttribute("employers", employerRepository.findAll());
-        //Do I need this line:
         model.addAttribute("skills", skillRepository.findAll());
         return "add";
     }
