@@ -37,7 +37,6 @@ public class Skill extends AbstractEntity {
         this.description = description;
     }
 
-    //Do I need getter/setter for Jobs list?
     public List<Job> getJobs() {
         return jobs;
     }
