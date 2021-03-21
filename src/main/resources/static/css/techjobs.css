@@ -64,8 +64,10 @@ div.job-listing {
 .checkboxes {
    display: flex;
    flex-wrap: wrap;
+   flex-direction: row;
+   flex-align: left;
 }
 
 .checkboxes>* {
-  flex: 1 1 33%;
+  flex: 1 1 50%;
 }
