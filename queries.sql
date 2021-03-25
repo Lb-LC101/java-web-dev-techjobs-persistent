@@ -13,9 +13,9 @@ WHERE location = 'St. Louis City';
 DROP TABLE JOB;
 
 ## Part 4: Test it with SQL
-SELECT skill.name, skill.description
+SELECT DISTINCT skill.name, skill.description
 FROM skill
 INNER JOIN job_skills ON job_skills.skills_id=skill.id
 WHERE job_skills.skills_id IS NOT NULL and skill.id IS NOT NULL
-GROUP BY name
+
 ORDER BY name ASC;

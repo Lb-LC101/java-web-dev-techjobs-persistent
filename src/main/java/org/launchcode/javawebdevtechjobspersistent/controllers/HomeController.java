@@ -33,6 +33,7 @@ public class HomeController {
     public String index(Model model) {
         model.addAttribute("title", "My Jobs");
         model.addAttribute("jobs", jobRepository.findAll());
+
         return "index";
     }
 
@@ -51,6 +52,9 @@ public class HomeController {
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add Job");
+            //?Would like to keep selections for employers and skills but not sure how
+            model.addAttribute("employers", employerRepository.findAll());
+            model.addAttribute("skills", skillRepository.findAll());
             return "add";
         }
         //add employer selected from drop-down menu to the new job.  If there is no employer in the employer repository, create a new employer.
